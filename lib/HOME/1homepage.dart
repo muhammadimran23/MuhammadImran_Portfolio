@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:muhammadimran_portfolio/HOME/2homepageslide.dart';
 import 'package:muhammadimran_portfolio/HOME/3homepageabout.dart';
 import 'package:muhammadimran_portfolio/color.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // ignore: camel_case_types
 class homepage extends StatefulWidget {
@@ -110,7 +111,7 @@ class _homepageState extends State<homepage> {
                 color: Colorname.deepNavy,
                 width: double.infinity,
                 child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(width: 40),
                     Text(
@@ -118,26 +119,62 @@ class _homepageState extends State<homepage> {
                       style: TextStyle(fontSize: 16, color: Colorname.white),
                     ),
                     Spacer(),
-                    FaIcon(
-                      FontAwesomeIcons.github,
-                      size: 20,
-                      color: Colorname.white,
+                    IconButton(
+                      onPressed: () async {
+                        final Uri url = Uri.parse("https://github.com/");
+                        await launchUrl(
+                          url,
+                          mode: LaunchMode.externalApplication,
+                        );
+                      },
+                      icon: FaIcon(
+                        FontAwesomeIcons.github,
+                        size: 20,
+                        color: Colorname.white,
+                      ),
                     ),
-                    SizedBox(width: 10),
-                    FaIcon(
-                      FontAwesomeIcons.linkedin,
-                      size: 20,
-                      color: Colorname.white,
+                    SizedBox(width: 8),
+                    IconButton(
+                      onPressed: () async {
+                        final Uri url = Uri.parse("https://www.instagram.com/");
+                        await launchUrl(
+                          url,
+                          mode: LaunchMode.externalApplication,
+                        );
+                      },
+                      icon: FaIcon(
+                        FontAwesomeIcons.instagram,
+                        size: 20,
+                        color: Colorname.white,
+                      ),
                     ),
-                    SizedBox(width: 10),
-                    FaIcon(
-                      FontAwesomeIcons.instagram,
-                      size: 20,
-                      color: Colorname.white,
+                    SizedBox(width: 8),
+                    IconButton(
+                      onPressed: () async {
+                        final Uri url = Uri.parse("https://www.linkedin.com/");
+                        await launchUrl(
+                          url,
+                          mode: LaunchMode.externalApplication,
+                        );
+                      },
+                      icon: FaIcon(
+                        FontAwesomeIcons.linkedin,
+                        size: 20,
+                        color: Colorname.white,
+                      ),
                     ),
 
-                    SizedBox(width: 10),
-                    Icon(Icons.mail, size: 20, color: Colorname.white),
+                    SizedBox(width: 8),
+                    IconButton(
+                      onPressed: () async {
+                        final Uri url = Uri.parse("https://mail.google.com/");
+                        await launchUrl(
+                          url,
+                          mode: LaunchMode.externalApplication,
+                        );
+                      },
+                      icon: Icon(Icons.mail, size: 20, color: Colorname.white),
+                    ),
 
                     SizedBox(width: 50),
 
