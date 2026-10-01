@@ -1,4 +1,4 @@
-name: Deploy Flutter Web
+name: Deploy static content to Pages
 
 on:
   push:
@@ -11,23 +11,16 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build Flutter Web
-        run: flutter build web --release --base-href "/MuhammadImran_Portfolio/"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -35,7 +28,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: build/web
+          path: .
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
